@@ -1,0 +1,78 @@
+#mainPageBackground {
+	background-image: url("../image/watch_bg.png");
+	background-size: contain;
+}
+
+#hand-main-hour {
+    position: absolute;
+    left: 172.5px;
+    top: 0px;
+    width: 15px;
+    height: 98vw;
+    background-image: url("../image/watch_hand_hour.png");
+    background-position: center top;
+    background-size: contain;
+}
+
+#hand-main-minute {
+    position: absolute;
+    left: 172px;
+    top: 0px;
+    width: 16px;
+    height: 105vw;
+    background-image: url("../image/watch_hand_minute.png");
+    background-position: center top;
+    background-size: contain;
+}
+
+#hand-main-second {
+    position: absolute;
+    left: 172Px;
+    top: 0px;
+    width: 16px;
+    height: 108vw;
+    background-image: url("../image/watch_hand_second.png");
+    background-position: center top;
+    background-size: contain;
+}
+
+#TimeTrack-TimeLeft {
+    position: absolute;
+    left: 50vw;
+    top: 50vh;
+    font-size: 12vw;
+    transform: translateX(-50%) translateY(-50%);
+    color: #30E584;
+    z-index:2;
+}
+
+#TimeTrack_TimeLeft_Text {
+    background-color: black;
+    font: caption;
+    font-size: 12vw;
+}
+
+#TimeTrack_Position {
+    position: absolute;
+    left: 50%;
+    top: 53.5%;
+    transform: translateX(-43%);
+    z-index:1;
+    background-color:black;
+}
+
+#TimeTrack_Position_Text {
+	color: white;
+	font: caption;
+    font-size: 3.8vw;
+}
+
+#TimeTrack_Position_Indicator {
+	position: absolute;
+    left: -11%;
+    top: 46.3%;
+    background-color: #30E584;
+    border-radius: 5vw;
+    width: 1.1vw;
+    height: 1.1vw;
+}

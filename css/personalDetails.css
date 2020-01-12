@@ -1,0 +1,44 @@
+#PersonalDetails_Page_CurrentTime {
+	position: absolute;
+    left: 50%;
+    top: 23%;
+    transform: translateX(-50%) translateY(-50%);
+    font-size: 5vw;
+}
+
+#PersonalDetails_Page_BG {
+	position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 60%;
+}
+
+#PersonalDetails_Page_NevigationIcon {
+    position: absolute;
+    left: 50%;
+    top: 67%;
+    width: 9vw;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+#PersonalDetails_Page_Position {
+    position: absolute;
+    left: 50%;
+    top: 39%;
+    width: 50vw;
+    transform: translateX(-50%) translateY(-50%);
+    font-size: 8vw;
+    color: black;
+    text-align: center;
+    font-family: cursive;
+}
+
+#PersonalDetails_Page_PersonalPhoto {
+    width: 16%;
+    border-radius: 50%;
+    position: absolute;
+    left: 28%;
+    top: 29%;
+    transform: translateX(-50%) translateY(-50%);
+}

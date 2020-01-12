@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+	<meta name="description" content="App"/>
+    <title>Home</title>
+  	<link rel="stylesheet" href="css/tau.css"/>
+  	
+  	<link rel="stylesheet" type="text/css" href="css/loading.css" />
+  	<link rel="stylesheet" type="text/css" href="css/watch.css" />
+  	
+  	<link rel="stylesheet" type="text/css" href="css/homePage.css" />
+    <link rel="stylesheet" type="text/css" href="css/nevigation.css" />
+    <link rel="stylesheet" type="text/css" href="css/peopleList.css" />
+    <link rel="stylesheet" type="text/css" href="css/personalDetails.css" />
+    
+    <script src="js/loading.js"></script>
+</head>
+
+<body>
+<div id="loadingContainer">
+	<div class="loading"><div></div><div></div><div></div><div></div></div>
+</div>
+	
+	<div class="ui-page ui-page-active" id="main">
+	   <div class="ui-content">
+	      <div class="container">
+	        <div class="background" id="mainPageBackground">
+	            <div class="components-main">
+	                <div id="hand-main-hour"></div>
+	                <div id="hand-main-minute"></div>
+	                <div id="hand-main-second"></div>
+	                <div id="TimeTrack-TimeLeft">
+	                <p id="TimeTrack_Head"></p>
+	                <a class="linkWithoutStyle" href="#nevigationPage">
+	                	<p id="TimeTrack_TimeLeft_Text">00:00:00</p>
+	                </a>
+	                </div>
+	                <div id="TimeTrack_Position">
+	                	<div id="TimeTrack_Position_Indicator"></div>
+	                	<p id="TimeTrack_Position_Text">Meeting room</p>
+	                </div>
+	                <div id="TimeTrack_Position_toolBar">
+	                	<a class="linkWithoutStyle" href="#peopleListPage">
+	                		<img class="toolBar_Left" src="image/ToolBar1.png" onload="loaded()"></img>
+	                	</a>
+	                	<img class="toolBar_Right" src="image/ToolBar2.png" onload="loaded()"></img>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	   </div>
+	</div>
+	
+	<div class="ui-page" id="nevigationPage">
+	   <div class="ui-content">
+	       <div class="container">
+	        <div class="background">
+	            <div class="components-main">
+	            	<p class="page_Title" id="nevigation_Title">Map</p>
+	            	<p class="page_CurrentTime">00:00</p>
+	            	<div id="toolBar">
+	            	<a class="linkWithoutStyle" href="#peopleListPage">
+	                	<img class="toolBar_Left" src="image/ToolBar1.png"  onload="loaded()"></img>
+	                </a>
+	                	<img class="toolBar_Right" src="image/ToolBar2.png"  onload="loaded()"></img>
+	                </div>
+	                <div id="nevigation_Map">
+	                	<!--Temp image as replacement-->
+	                	<a class="linkWithoutStyle" href="#main">
+	                		<img id="nevigation_Map_Image" src="image/nevigation_Map.png"  onload="loaded()"></img>
+	                	</a>
+	                </div>
+	                <div id="nevigation_Destination">
+	                	<p id="nevigation_Destination_Head">Destination:</p>
+	                	<p id="nevigation_Destination_Name">Barbara</p>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	   </div>
+	</div>
+	
+	<div class="ui-page" id="peopleListPage">
+	   <div class="ui-content">
+	       <div class="container">
+	        <div class="background">
+	            <div class="components-main">
+	            	<p class="page_Title" id="PeopleList_Page_Title">People</p>
+	            	<p class="page_CurrentTime" id="PeopleList_Page_CurrentTime">00:00</p>
+	            	<div id="toolBar">
+	            	<a class="linkWithoutStyle" href="#main">
+	                	<img class="toolBar_Left" src="image/ToolBar1.png"></img>
+	                </a>
+	                	<img class="toolBar_Right" src="image/ToolBar2.png"></img>
+	                </div>
+	                <div id="peopleList">
+	                	<!-- List of people -->
+	                </div>
+	               	<div id="FirstLetterNameSelector">
+	               		<p id="PreviousLetter"><!--Letter--></p>
+	               		<p id="CurrentLetter"><!--Letter--></p>
+	               		<p id="NextLetter"><!--Letter--></p>
+	               	</div>
+	            </div>
+	        </div>
+	    </div>
+	   </div>
+	</div>
+	
+	<div class="ui-page" id="personalDetails">
+	   <div class="ui-content">
+	       <div class="container">
+	        <div class="background">
+	            <div class="components-main">
+	            	<img id="PersonalDetails_Page_BG" src="image/personalDetails_bg.png"></img>
+	            	<img id="PersonalDetails_Page_PersonalPhoto"></img>
+	            	<img id="PersonalDetails_Page_NevigationIcon" src="image/personalDetails_NevigationIcon.png"></img>
+	            	<p id="PersonalDetails_Page_Position">Position</p>
+	            	<p class="page_CurrentTime" id="PersonalDetails_Page_CurrentTime">00:00</p>
+	            	<div id="toolBar">
+	            	<a class="linkWithoutStyle" href="#peopleListPage">
+	                	<img class="toolBar_Left" src="image/ToolBar1.png"></img>
+	                </a>
+	                	<img class="toolBar_Right" src="image/ToolBar2.png"></img>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	   </div>
+	</div>
+	
+    
+ 	<script type="text/javascript" src="js/tau.js"></script>
+ 	
+ 	<script src="js/headBar_Clock.js"></script>
+    <script src="js/mainPage_Clock.js"></script>
+    <script src="js/mainPage_TimeTrack.js"></script>
+    <script src="js/nevigation.js"></script>
+    <script src="js/peopleList.js"></script>
+    <script src="js/rotaryEvent.js"></script>
+    
+</body>
+</html>
