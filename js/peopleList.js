@@ -86,9 +86,9 @@ function updatePeopleList(startLetter){
 	}
 }
 
-var PreviousLetterElement = document.getElementById("PreviousLetter");
-var CurrentLetterElement = document.getElementById("CurrentLetter");
-var NextLetterElement = document.getElementById("NextLetter");
+var PreviousLetterElement = document.getElementById("peopleListPage").querySelector("#PreviousLetter");
+var CurrentLetterElement = document.getElementById("peopleListPage").querySelector("#CurrentLetter");
+var NextLetterElement = document.getElementById("peopleListPage").querySelector("#NextLetter");
 
 function updateLetterSelector() {
 	if(currentLetterCode < 'A'.charCodeAt(0)) {

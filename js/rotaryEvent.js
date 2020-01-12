@@ -2,6 +2,9 @@
 		if(document.getElementById("peopleListPage").classList.contains("ui-page-active")) {
 			currentLetterCode++;
 			updateLetterSelector();
+		}else if(document.getElementById("workplaceListPage").classList.contains("ui-page-active")) {
+			WorkSpaceList_currentLetterCode++;
+			updateWorkSpaceLetterSelector();
 		}
 	}
 	
@@ -9,6 +12,9 @@
 		if(document.getElementById("peopleListPage").classList.contains("ui-page-active")) {
 			currentLetterCode--;
 			updateLetterSelector();
+		}else if(document.getElementById("workplaceListPage").classList.contains("ui-page-active")) {
+			WorkSpaceList_currentLetterCode--;
+			updateWorkSpaceLetterSelector();
 		}
 	}
 	
