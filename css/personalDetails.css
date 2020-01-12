@@ -37,7 +37,7 @@
 #PersonalDetails_Page_PersonalPhoto {
     border-radius: 50%;
     position: absolute;
-    width: 50vw;
+    width: 18vw;
     left: 28%;
     top: 29%;
     transform: translateX(-50%) translateY(-50%);

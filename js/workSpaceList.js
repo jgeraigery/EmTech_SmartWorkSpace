@@ -16,9 +16,18 @@ var workSpaceListArray = [["Rest room",
 						   "B7",
 						   "B8",
 						   "B9",],
-						   [],	//Leisure List
+						   ["Coffee(Engineering building)",
+						    "Coffee(Main Campus)",
+						    "Coffee(IOE)",
+						    "Gaming Room(Engineer)",
+						    "A1 Leisure",
+						    "A2 Leisure",
+						    "A3 Leisure",
+						    "B1 Leisure",],	//Leisure List
 						   [],	//Favourite List
-						   []];	//WC List
+						   ["Engineering building",
+						    "IOE",
+						    "Student Center First Floor"]];	//WC List
 
 var workSpaceList_SelectedType=0;
 
@@ -56,7 +65,7 @@ var peopleList_Length=peopleList_Names.length;
 
 function updateWorkSpaceList(startLetter){
 	var container = document.getElementById("WorkSpaceList");
-	var top = "26.5vw";
+	var top = "27.5vw";
 	container.innerHTML = "";
 	var selectedWorkSpaceList = workSpaceListArray[workSpaceList_SelectedType];
 	for(let i=0;i<selectedWorkSpaceList.length;i++){
@@ -72,10 +81,11 @@ function updateWorkSpaceList(startLetter){
 		
 		personName.classList.add("workSpaceList_PersonName");
 		personName.innerHTML = selectedWorkSpaceList[i];
-		personName.style.top = (parseInt(top)-3.6)+"vw";
+		if(top == "27vw") personName.style.top = (parseInt(top)-5)+"vw";
+		else personName.style.top = (parseInt(top)-4.5)+"vw";
 		container.appendChild(personName);
 		container.appendChild(person);
-		top=(parseInt(top)+16.5)+"vw";
+		top=(parseInt(top)+17.5)+"vw";
 	}
 }
 

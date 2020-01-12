@@ -25,19 +25,19 @@
 }
 
 .workSpaceList_Background {
-	background-Color: rgba(150,150,150,0.30);
+	background-Color: rgba(150,150,150,0.20);
 	position: absolute;
-	width: 50vw;
-	height: 12vh;
+    width: 56vw;
+    height: 13.6vh;
 	transform: translateX(-50%) translateY(-50%);
 	left: 50%;
-	border-radius: 5vw;
+	border-radius: 4vw;
 }
 
 .workSpaceList_PersonName {
 	position: absolute;
 	color: #707070;
-	font-size: 4vw;
+	font-size: 5vw;
     font-family: monospace;
     transform: translateX(-50%) translateY(-50%);
     left: 50%;
