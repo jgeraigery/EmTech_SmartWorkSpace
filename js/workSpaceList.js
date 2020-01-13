@@ -58,10 +58,10 @@ function addWorkSpaceListScrollEvent() {
 
 var peopleList_Length=peopleList_Names.length;
 
-//function showPersonalDetails(index) {
-//	tau.changePage("#personalDetails");
-//	document.getElementById("PersonalDetails_Page_PersonalPhoto").src=peopleList_Photos[index];
-//}
+function showWorkSpaceDetails(type,index) {
+	tau.changePage("#workSpaceDetails");
+	document.getElementById("workSpaceDetails").querySelector(".Details_Page_Position").innerHTML=workSpaceListArray[type][index];
+}
 
 function updateWorkSpaceList(startLetter){
 	var container = document.getElementById("WorkSpaceList");
@@ -75,12 +75,15 @@ function updateWorkSpaceList(startLetter){
 		var personName = document.createElement("p");
 		person.classList.add("workSpaceList_Background");
 		person.style.top = top;
-//		person.addEventListener("click",function(){
-//			showWorkSpaceDetails(i);
-//		});
+		person.addEventListener("click",function(){
+			showWorkSpaceDetails(workSpaceList_SelectedType,i);
+		});
 		
 		personName.classList.add("workSpaceList_PersonName");
 		personName.innerHTML = selectedWorkSpaceList[i];
+		personName.addEventListener("click",function(){
+			showWorkSpaceDetails(workSpaceList_SelectedType,i);
+		});
 		if(top == "27vw") personName.style.top = (parseInt(top)-5)+"vw";
 		else personName.style.top = (parseInt(top)-4.5)+"vw";
 		container.appendChild(personName);
