@@ -29,3 +29,13 @@
 #nevigation_Title {
 	left: 35%;
 }
+
+#locationInfo {
+	position: absolute;
+    font-size: 5.6vw;
+    color: white;
+    left: 47%;
+    transform: translateX(-50%);
+    top: 33%;
+    letter-spacing: 1px;
+}

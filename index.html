@@ -16,14 +16,18 @@
     <link rel="stylesheet" type="text/css" href="css/personalDetails.css" />
     <link rel="stylesheet" type="text/css" href="css/workSpace.css" />
     <link rel="stylesheet" type="text/css" href="css/workSpaceList.css" />
-
+    
     <script src="js/loading.js"></script>
+    
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-core.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-service.js" type="text/javascript" charset="utf-8"></script>
+    
 </head>
 
 <body>
-<div id="loadingContainer">
-	<div class="loading"><div></div><div></div><div></div><div></div></div>
-</div>
+	<div id="loadingContainer">
+		<div class="loading"><div></div><div></div><div></div><div></div></div>
+	</div>
 	
 	<div class="ui-page ui-page-active" id="main">
 	   <div class="ui-content">
@@ -73,9 +77,38 @@
 	                </a>
 	                </div>
 	                <div id="nevigation_Map">
-	                	<!--Temp image as replacement-->
 	                	<a class="linkWithoutStyle" href="#main">
-	                		<img id="nevigation_Map_Image" src="image/nevigation_Map.png"  onload="loaded()"></img>
+	                		<p id="locationInfo"></p>
+	                	</a>
+	                </div>
+	                <div id="nevigation_Destination">
+	                	<p id="nevigation_Destination_Head">Destination:</p>
+	                	<p id="nevigation_Destination_Name">Barbara</p>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	   </div>
+	</div>
+
+	<div class="ui-page" id="nevigationPage">
+	   <div class="ui-content">
+	       <div class="container">
+	        <div class="background">
+	            <div class="components-main">
+	            	<p class="page_Title" id="nevigation_Title">Map</p>
+	            	<p class="page_CurrentTime">00:00</p>
+	            	<div id="toolBar">
+	            	<a class="linkWithoutStyle" href="#peopleListPage">
+	                	<img class="toolBar_Left" src="image/ToolBar1.png"  onload="loaded()"></img>
+	                </a>
+	               	<a class="linkWithoutStyle" href="#workplaceType">
+	                	<img class="toolBar_Right" src="image/ToolBar2.png"  onload="loaded()"></img>
+	                </a>
+	                </div>
+	                <div id="nevigation_Map">
+	                	<a class="linkWithoutStyle" href="#main">
+	                		<p id="locationInfo"></p>
 	                	</a>
 	                </div>
 	                <div id="nevigation_Destination">
@@ -220,7 +253,6 @@
 	   </div>
 	</div>
 	
-    
  	<script type="text/javascript" src="js/tau.js"></script>
  	
  	<script src="js/headBar_Clock.js"></script>
@@ -231,6 +263,5 @@
     <script src="js/rotaryEvent.js"></script>
     <script src="js/workSpaceList.js"></script>
     <script src="js/backButtonEvents.js"></script>
-    
 </body>
 </html>
