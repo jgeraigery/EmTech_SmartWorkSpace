@@ -123,9 +123,6 @@ function iniWorkSpaceList(type) {
 	}else if(type=="Fav") {
 		workSpaceList_SelectedType = 2;
 		document.getElementById("WorkSpaceList_Page_Title").innerHTML="Favs"
-	}else if(type=="WC") {
-		workSpaceList_SelectedType = 3;
-		document.getElementById("WorkSpaceList_Page_Title").innerHTML="WC"
 	}
 	updateWorkSpaceList(String.fromCharCode(WorkSpaceList_currentLetterCode));
 }
