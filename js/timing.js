@@ -111,8 +111,12 @@ function processReturnedData(myJson){
 
  //This function should be triggered when detected a change in current location
 function leftGeoFence(areaThatWasLeft_ID) {
-
+	//Hide current location on main screen
+	$("#TimeTrack_Position")[0].style.visibility = "hidden";
+	
     timeTrackingEnabled = false;
+    
+    clearCurrentStayingTime();
 
     let locationIndicator = mapLocationID(areaThatWasLeft_ID);      //Convert ID to indicator
 
@@ -126,6 +130,8 @@ function leftGeoFence(areaThatWasLeft_ID) {
 }
 
 function enteredGeoFence(areaThatWasEntered) {
+	//Display current location on main screen
+	$("#TimeTrack_Position")[0].style.visibility = "visible";
 	timeTrackingEnabled = true;
 	document.getElementById('TimeTrack_Position_Text').innerHTML = areaThatWasEntered;
 	document.getElementById('nevigation_Destination_Name').innerHTML = areaThatWasEntered;
@@ -133,16 +139,20 @@ function enteredGeoFence(areaThatWasEntered) {
 
  //Updating timer with the defined interval
  setInterval(function(){
+	timeTrackin_CheckDataFromStorage();
+	if(!timeTrackingEnabled) return;
     timeSpentTimer += timeTracking_CheckingInterval;
-    timeTrackin_CheckDataFromStorage();
  }, timeTracking_CheckingInterval);
  
 //Simulation of position change, should be replaced in the future
 function positionChangeSimulation() {
-    leftGeoFence(locationID);
+	setTimeout(positionChangeSimulation, Math.floor((Math.random()*50000 + 5000)));
+	if(timeTrackingEnabled) {
+	    leftGeoFence(locationID);
+	    return;
+	}
     locationID = Object.keys(locationIDSet)[Math.floor((Math.random()*3))];
     enteredGeoFence(locationID);
-    setTimeout(positionChangeSimulation, Math.floor((Math.random()*50000 + 5000)));
 }
 
 //Get current date in this format: yyyymmdd
