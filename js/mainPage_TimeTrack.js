@@ -1,3 +1,5 @@
+	var timeTrackingEnabled = false;
+
 	var timeTracking_TimeLeft_Hour=0;
 	var timeTracking_TimeLeft_Minute=0;
 	var timeTracking_TimeLeft_Second=0;
@@ -6,6 +8,7 @@
 		var prefix_Second="";
 		var prefix_Minute="";
 		var prefix_Hour="";
+		
 		if(timeTracking_TimeLeft_Second<10){
 			prefix_Second="0";
 		}if(timeTracking_TimeLeft_Minute<10){
@@ -25,10 +28,35 @@
 		}
 	}
 	
+	function updateDigitalTime() {
+		var prefix_Second="";
+		var prefix_Minute="";
+		var prefix_Hour="";
+		
+		var datetime = tizen.time.getCurrentDateTime(),
+        hour = datetime.getHours(),
+        minute = datetime.getMinutes(),
+        second = datetime.getSeconds();
+		
+		if(second<10){
+			prefix_Second="0";
+		}if(minute<10){
+			prefix_Minute="0";
+		}if(hour<10){
+			prefix_Hour="0";
+		}
+		
+		document.getElementById("TimeTrack_TimeLeft_Text").innerHTML = prefix_Hour + hour+":"+ prefix_Minute + minute+":"+ prefix_Second + second;
+	}
+	
 	function init(){
 		// Update the watch hands every second
         setInterval(function() {
-            updateCurrentStayingTime();
+        	if (timeTrackingEnabled) {
+        		updateCurrentStayingTime();
+        	} else {
+        		updateDigitalTime()
+        	}
         }, 1000);
        
 	}

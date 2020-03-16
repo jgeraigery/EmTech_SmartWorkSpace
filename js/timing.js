@@ -111,6 +111,9 @@ function processReturnedData(myJson){
 
  //This function should be triggered when detected a change in current location
 function leftGeoFence(areaThatWasLeft_ID) {
+
+    timeTrackingEnabled = false;
+
     let locationIndicator = mapLocationID(areaThatWasLeft_ID);      //Convert ID to indicator
 
     timeSpentInfo.timeSpentInfo.indicator.push(locationIndicator);
@@ -120,6 +123,12 @@ function leftGeoFence(areaThatWasLeft_ID) {
     localStorage.setItem("timeSpentInfo", JSON.stringify(timeSpentInfo));
 
     timeSpentTimer=0;       //Reset timer
+}
+
+function enteredGeoFence(areaThatWasEntered) {
+	timeTrackingEnabled = true;
+	document.getElementById('TimeTrack_Position_Text').innerHTML = areaThatWasEntered;
+	document.getElementById('nevigation_Destination_Name').innerHTML = areaThatWasEntered;
 }
 
  //Updating timer with the defined interval
@@ -132,6 +141,7 @@ function leftGeoFence(areaThatWasLeft_ID) {
 function positionChangeSimulation() {
     leftGeoFence(locationID);
     locationID = Object.keys(locationIDSet)[Math.floor((Math.random()*3))];
+    enteredGeoFence(locationID);
     setTimeout(positionChangeSimulation, Math.floor((Math.random()*50000 + 5000)));
 }
 
