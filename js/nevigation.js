@@ -44,14 +44,13 @@ mymap.tap.disable();
 function centerLeafletMapOnMarker(map, marker) {
 	  var latLngs = [marker.getLatLng()];
 	  var markerBounds = L.latLngBounds(latLngs);
-	  map.fitBounds(markerBounds);geoJSONFeatureCollectiongeoJSgeoJSONFeatureCollectiongeoJSONFeatureCollectiongeoJSONFeatureCollectiongeoJSONFeatureCollectionONFeatureCollection
+	  map.fitBounds(markerBounds);
 }
 
 function successCallback(position) {
 	// Create the parameters for the reverse geocoding request:
 	
 	var coords = [position.coords.latitude, position.coords.longitude];
-	var results = leafletPip.pointInLayer(coords, myLayer, true);
 	
 	if (marker !== null) {
 		var line = L.polyline([marker.getLatLng(), coords]);
@@ -62,30 +61,17 @@ function successCallback(position) {
     } else {
     	marker = L.marker(coords).addTo(mymap);
     }
-	document.getElementById('nevigation_Destination_Name').innerHTML = results.length
+	
 	centerLeafletMapOnMarker(mymap, marker);
 	
-//	if (!timeTrackingEnabled) {
-//		var reverseGeocodingParameters = {
-//				prox: position.coords.latitude + ',' + position.coords.longitude + ',150',
-//			    mode: 'retrieveAddresses',
-//			    maxresults: 1
-//		};
-//		
-//		// Call the geocode method with the geocoding parameters,
-//		// the callback and an error callback function (called if a
-//		// communication error occurs):
-//		geocoder.reverseGeocode(
-//				reverseGeocodingParameters,
-//			    onSuccess,
-//			    function(e) { document.getElementById('nevigation_Destination_Name').innerHTML = "Unavailable" });
-//	}
+	var results = leafletPip.pointInLayer(coords, myLayer, true);
 	
-//	if (isMarkerInsidePolygon(coords, geoJSONFeatureCollection.features[0].geometry.coordinates[0][0])) {
-//		window.alert("foo");
-//	} else  {
-//		window.alert("bar");
-//	}
+	if (results.length > 0) {
+		enteredGeoFence(geoJSONFeature.name);
+	} else {
+		leftGeoFence(geoJSONFeature.name)
+	}
+	
 }
 
 function errorCallback(error) {
