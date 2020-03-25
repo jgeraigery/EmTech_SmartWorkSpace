@@ -14,6 +14,8 @@ function backButtonPressEvent()
 	    		tau.changePage("#workplaceType");
 	    	}else if(document.getElementById("workSpaceDetails").classList.contains("ui-page-active")) {
 	    		tau.changePage("#workplaceListPage");
+	    	}else if(document.getElementById("timeSpentReportQRCode").classList.contains("ui-page-active")) {
+	    		tau.changePage("#workplaceType");
 	    	}
 	    }
 	});

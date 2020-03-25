@@ -53,9 +53,11 @@
 }
 
 #TimeTrack_Position {
+	visibility: hidden;
+	display: flex;
     position: absolute;
     left: 50%;
-    top: 53.5%;
+    top: 53.6%;
     transform: translateX(-43%);
     z-index:1;
     background-color:black;
@@ -65,12 +67,12 @@
 	color: white;
 	font: caption;
     font-size: 3.8vw;
+    margin-left: 3px;
 }
 
 #TimeTrack_Position_Indicator {
-	position: absolute;
-    left: -11%;
-    top: 46.3%;
+	justify-content: center;
+    align-self: center;
     background-color: #30E584;
     border-radius: 5vw;
     width: 1.1vw;
