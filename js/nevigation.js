@@ -1,15 +1,13 @@
-var geoJSONFeatureCollection = {
+var geoJSONFeature = {
 		"type": "FeatureCollection",
-		"name": "Rect1",
+		"name": "Rect5",
 		"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 		"features": [
-		{ "type": "Feature", "properties": { "id": 2 }, "geometry": { "type": "MultiPolygon", "coordinates": [ [ [ [ -0.129840366098377, 51.577010369316845 ],
-		                                                                                                           [ -0.129208594138269, 51.577199795080432 ],
-		                                                                                                           [ -0.128861489945781, 51.576748982927995 ],
-		                                                                                                           [ -0.129478446483039, 51.576515110895862 ] ] ] ] } }
+		{ "type": "Feature", "properties": { "id": 5 }, "geometry": { "type": "MultiPolygon", "coordinates": [ [ [ [ -0.129823141375036, 51.577004472237995 ], [ -0.129291861411101, 51.577168235954474 ], [ -0.12886150559802, 51.576671232117242 ], [ -0.129457529356844, 51.576501755712975 ], [ -0.129823141375036, 51.577004472237995 ] ] ] ] } }
 		]
-		};
+		}
 
+	
 var platform = new H.service.Platform({'apikey': '5cA7YxjJSM3kLtn4MlXrNbIkcRiV5LzJ0J1XWHBMyr0'});
 
 // Get default map types from the platform object:
@@ -21,7 +19,9 @@ var geocoder = platform.getGeocodingService();
 var watchId;
 var marker = null;
 var mymap = L.map('nevigation_Map', {zoomControl: false, attributionControl: false});
-var myLayer = L.geoJSON().addTo(mymap);
+var myLayer = L.geoJSON(geoJSONFeature).addTo(mymap);
+
+leafletPip.bassackwards = true;
 
 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
 //	attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -32,8 +32,6 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 	zoomOffset: -1,
 	accessToken: 'pk.eyJ1IjoiZGV2MDMxNyIsImEiOiJjazduNnBicXYwZ2hzM25wamJsajlkY2t2In0.vYd6vbk1P4ZiUP4Dz0oZ7w'
 }).addTo(mymap);
-
-myLayer.addData(geoJSONFeatureCollection);
 
 mymap.dragging.disable();
 mymap.touchZoom.disable();
@@ -46,13 +44,14 @@ mymap.tap.disable();
 function centerLeafletMapOnMarker(map, marker) {
 	  var latLngs = [marker.getLatLng()];
 	  var markerBounds = L.latLngBounds(latLngs);
-	  map.fitBounds(markerBounds);
+	  map.fitBounds(markerBounds);geoJSONFeatureCollectiongeoJSgeoJSONFeatureCollectiongeoJSONFeatureCollectiongeoJSONFeatureCollectiongeoJSONFeatureCollectionONFeatureCollection
 }
 
 function successCallback(position) {
 	// Create the parameters for the reverse geocoding request:
 	
 	var coords = [position.coords.latitude, position.coords.longitude];
+	var results = leafletPip.pointInLayer(coords, myLayer, true);
 	
 	if (marker !== null) {
 		var line = L.polyline([marker.getLatLng(), coords]);
@@ -63,23 +62,24 @@ function successCallback(position) {
     } else {
     	marker = L.marker(coords).addTo(mymap);
     }
+	document.getElementById('nevigation_Destination_Name').innerHTML = results.length
 	centerLeafletMapOnMarker(mymap, marker);
 	
-	if (!timeTrackingEnabled) {
-		var reverseGeocodingParameters = {
-				prox: position.coords.latitude + ',' + position.coords.longitude + ',150',
-			    mode: 'retrieveAddresses',
-			    maxresults: 1
-		};
-		
-		// Call the geocode method with the geocoding parameters,
-		// the callback and an error callback function (called if a
-		// communication error occurs):
-		geocoder.reverseGeocode(
-				reverseGeocodingParameters,
-			    onSuccess,
-			    function(e) { document.getElementById('nevigation_Destination_Name').innerHTML = "Unavailable" });
-	}
+//	if (!timeTrackingEnabled) {
+//		var reverseGeocodingParameters = {
+//				prox: position.coords.latitude + ',' + position.coords.longitude + ',150',
+//			    mode: 'retrieveAddresses',
+//			    maxresults: 1
+//		};
+//		
+//		// Call the geocode method with the geocoding parameters,
+//		// the callback and an error callback function (called if a
+//		// communication error occurs):
+//		geocoder.reverseGeocode(
+//				reverseGeocodingParameters,
+//			    onSuccess,
+//			    function(e) { document.getElementById('nevigation_Destination_Name').innerHTML = "Unavailable" });
+//	}
 	
 //	if (isMarkerInsidePolygon(coords, geoJSONFeatureCollection.features[0].geometry.coordinates[0][0])) {
 //		window.alert("foo");
@@ -126,8 +126,8 @@ function stopWatchFunc() {
 // Define a callback function to process the response:
 function onSuccess(result) {
 	var location = result.Response.View[0].Result[0];
-	document.getElementById('nevigation_Destination_Head').innerHTML = "Address";
-	document.getElementById('nevigation_Destination_Name').innerHTML = location.Location.Address.Label;
+	document.getElementById('nevigation_Destination_Head').innerHTML = "Location";
+	document.getElementById('nevigation_Destination_Name').innerHTML = "Personally Identifiable Information was removed";
 };
 
 function isMarkerInsidePolygon(coords, polyPoints) {       
