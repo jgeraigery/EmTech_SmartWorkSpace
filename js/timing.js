@@ -1,4 +1,4 @@
-const timeTracking_CheckingInterval = 5000;   
+const timeTracking_CheckingInterval = 1000;   
 /*
     Time in second between updating timer
     The lower the value, the lower the power efficiency. 
@@ -7,7 +7,7 @@ const timeTracking_CheckingInterval = 5000;
 
 const timeTracking_SendingInterval = 1;       //Time in day between sending two updating request[Method sendUserTimeSpentInfo()] to server 
 
-let locationID = "Meeting room";                   //The unique id for identifying the current location. (Suppose to be provided by map function, this one is for test, remember to replace it)
+let locationID;
 
 let timeSpentInfo;
 
