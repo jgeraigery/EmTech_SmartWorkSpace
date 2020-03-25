@@ -18,13 +18,14 @@
 		}
 		document.getElementById("TimeTrack_TimeLeft_Text").innerHTML = prefix_Hour + timeTracking_TimeLeft_Hour+":"+ prefix_Minute + timeTracking_TimeLeft_Minute+":"+ prefix_Second +timeTracking_TimeLeft_Second;
 		timeTracking_TimeLeft_Second++;
+		
 		if(timeTracking_TimeLeft_Second==60){
 			timeTracking_TimeLeft_Minute++;
-			timeTracking_TimeLeft_Second
-		}if(timeTracking_TimeLeft_Minute==60){
+			timeTracking_TimeLeft_Second=0
+		}
+		if(timeTracking_TimeLeft_Minute==60){
 			timeTracking_TimeLeft_Hour++;
 			timeTracking_TimeLeft_Minute=0;
-			timeTracking_TimeLeft_Second=0;
 		}
 	}
 	
