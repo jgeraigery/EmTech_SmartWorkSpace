@@ -27,9 +27,9 @@ let timeSpentInfo_Default = {
  const url = 'https://workspaceguruapi.azurewebsites.net/api/TimeTrackingAPI'; 
 
 //The locationID set corresponds to the locationIndicator， must be synchronized with in API
-const locationIDSet = { "Meeting room" : 0,
-                        "Lab"  : 1,
-                        "Dinning room" : 2  };
+const locationIDSet = [ "Meeting room",
+                        "Lab",
+                        "Dinning room" ];
 
 let timeSpentTimer = 0;   //Time spent in seconds, will be reset when change position
 
@@ -40,7 +40,7 @@ let requestSendingLock = 0;
 //Function that map locationID to location indicator, locationIDSet must be up-to-date.
 function mapLocationID(id){ 
     try{
-        return locationIDSet[id];
+        return locationIDSet.indexOf(id);
     }catch(err){
         console.log("Not a valid position(Out of workspace or locationIDSet not updated)");
     }
@@ -101,10 +101,12 @@ function processReturnedData(myJson){
 //     document.body.innerText=JSON.stringify(myJson);
      if(myJson!="Failed to update") {
         //update the date to current
+    	 alert();
         localStorage.setItem("oldDate", getCurrentDate());
         //Restore the user time spent info that have been sent to the server
         localStorage.setItem("timeSpentInfo", JSON.stringify(timeSpentInfo_Default));
         timeSpentInfo = timeSpentInfo_Default;
+        console.log(timeSpentInfo);
      }
      requestSendingLock = 0;
  }
@@ -144,6 +146,13 @@ function enteredGeoFence(areaThatWasEntered) {
     timeSpentTimer += timeTracking_CheckingInterval;
  }, timeTracking_CheckingInterval);
 
+//Simulation of position change, should be replaced in the future
+ function positionChangeSimulation() {
+     leftGeoFence(locationID);
+     locationID = Object.keys(locationIDSet)[Math.floor((Math.random()*2))];
+     setTimeout(positionChangeSimulation, Math.floor((Math.random()*50000 + 5000)));
+ }
+ 
 //Get current date in this format: yyyymmdd
 function getCurrentDate() {
     let d = new Date();
@@ -200,6 +209,8 @@ function timeTrackingIni() {
         }
     }
     timeTrackin_CheckDataFromStorage();
+    
+    setTimeout(positionChangeSimulation, Math.floor((Math.random()*50000 + 5000)));
 }
 
 timeTrackingIni();

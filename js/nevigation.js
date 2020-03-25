@@ -8,8 +8,6 @@ var geoJSONFeature = {
 		{ "type": "Feature", "properties": { "id": 7 }, "geometry": { "type": "MultiPolygon", "coordinates": [ [ [ [ -0.129405838904355, 51.576861060814522 ], [ -0.12944555345661, 51.576924685148235 ], [ -0.129525793062188, 51.576898749114115 ], [ -0.129405838904355, 51.576861060814522 ] ] ] ] } }
 		]
 		}
-
-
 	
 var platform = new H.service.Platform({'apikey': '5cA7YxjJSM3kLtn4MlXrNbIkcRiV5LzJ0J1XWHBMyr0'});
 
