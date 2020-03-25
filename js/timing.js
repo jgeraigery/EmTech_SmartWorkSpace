@@ -143,17 +143,6 @@ function enteredGeoFence(areaThatWasEntered) {
 	if(!timeTrackingEnabled) return;
     timeSpentTimer += timeTracking_CheckingInterval;
  }, timeTracking_CheckingInterval);
- 
-//Simulation of position change, should be replaced in the future
-function positionChangeSimulation() {
-	setTimeout(positionChangeSimulation, Math.floor((Math.random()*50000 + 5000)));
-	if(timeTrackingEnabled) {
-	    leftGeoFence(locationID);
-	    return;
-	}
-    locationID = Object.keys(locationIDSet)[Math.floor((Math.random()*3))];
-    enteredGeoFence(locationID);
-}
 
 //Get current date in this format: yyyymmdd
 function getCurrentDate() {
@@ -210,9 +199,7 @@ function timeTrackingIni() {
             iniLocalTimeSpentInfo();
         }
     }
-    timeTrackin_CheckDataFromStorage();          
-
-    setTimeout(positionChangeSimulation, Math.floor((Math.random()*50000 + 5000)));
+    timeTrackin_CheckDataFromStorage();
 }
 
 timeTrackingIni();
