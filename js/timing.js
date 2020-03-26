@@ -22,10 +22,6 @@ let timeSpentInfo_Default = {
     }
 };
 
-//URL of Rest API
-// const url = 'http://localhost:7071/api/TimeTrackingAPI'; 
- const url = 'https://workspaceguruapi.azurewebsites.net/api/TimeTrackingAPI'; 
-
 //The locationID set corresponds to the locationIndicator， must be synchronized with in API
 const locationIDSet = [ "Meeting room",
                         "Lab",
