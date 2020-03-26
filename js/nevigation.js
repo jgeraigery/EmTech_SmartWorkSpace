@@ -11,8 +11,8 @@ var geoJSONFeature = {
 
 
 //URL of Rest API
-const url = 'http://localhost:7071/api/TimeTrackingAPI'; 
-//const url = 'https://workspaceguruapi.azurewebsites.net/api/TimeTrackingAPI'; 
+//const url = 'http://localhost:7071/api/TimeTrackingAPI'; 
+const url = 'https://workspaceguruapi.azurewebsites.net/api/TimeTrackingAPI'; 
 	
 var platform = new H.service.Platform({'apikey': '5cA7YxjJSM3kLtn4MlXrNbIkcRiV5LzJ0J1XWHBMyr0'});
 
