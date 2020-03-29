@@ -97,7 +97,6 @@ function processReturnedData(myJson){
 //     document.body.innerText=JSON.stringify(myJson);
      if(myJson!="Failed to update") {
         //update the date to current
-    	 alert();
         localStorage.setItem("oldDate", getCurrentDate());
         //Restore the user time spent info that have been sent to the server
         localStorage.setItem("timeSpentInfo", JSON.stringify(timeSpentInfo_Default));
