@@ -106,9 +106,9 @@ function successCallback(position) {
 	var results = leafletPip.pointInLayer(coords, myLayer, true);
 	
 	if (results.length > 0) {
-		enteredGeoFence(geoJSONFeature.name);
+//		enteredGeoFence(geoJSONFeature.name);
 	} else {
-		leftGeoFence(geoJSONFeature.name)
+//		leftGeoFence(geoJSONFeature.name)
 	}
 	
 }

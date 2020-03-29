@@ -7,7 +7,7 @@ const timeTracking_CheckingInterval = 1000;
 
 const timeTracking_SendingInterval = 1;       //Time in day between sending two updating request[Method sendUserTimeSpentInfo()] to server 
 
-let locationID;
+var locationID = null;
 
 let timeSpentInfo;
 
@@ -143,8 +143,9 @@ function enteredGeoFence(areaThatWasEntered) {
 
 //Simulation of position change, should be replaced in the future
  function positionChangeSimulation() {
-     leftGeoFence(locationID);
-     locationID = Object.keys(locationIDSet)[Math.floor((Math.random()*2))];
+	 if(locationID != null)	leftGeoFence(locationID);
+     locationID = Object.values(locationIDSet)[Math.floor((Math.random()*2))];
+     enteredGeoFence(locationID);
      setTimeout(positionChangeSimulation, Math.floor((Math.random()*50000 + 5000)));
  }
  
