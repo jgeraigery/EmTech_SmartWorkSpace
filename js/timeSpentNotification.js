@@ -5,7 +5,7 @@ let notification = 0;
 let timeSpentTimer_Old = 0;
 
 //Time for an pop up window to pop up in ms 
-let timeSpentNotification_NotifyTime = 10000; //One minute
+let timeSpentNotification_NotifyTime = 10000; //Ten seconds
 
 var timeSpentPopUpElement = document.getElementById("timeSpentPopUp");
 	timeSpentPopUp = tau.widget.Popup(timeSpentPopUp);

@@ -24,6 +24,7 @@ var watchId;
 var marker = null;
 var mymap = L.map('nevigation_Map', {zoomControl: false, attributionControl: false});
 var myLayer = L.geoJSON(geoJSONFeature).addTo(mymap);
+var area;
 
 leafletPip.bassackwards = true;
 
@@ -71,19 +72,32 @@ function successCallback(position) {
 	var results = leafletPip.pointInLayer(coords, myLayer, true);
 	
 	if (results.length > 0) {
-		enteredGeoFence(results[0].toGeoJSON().name);
-	} else {
-		leftGeoFence(results[0].toGeoJSON().name)
+		area = results[0].toGeoJSON().name
+		enteredGeoFence(area);
+	} else if (timeTrackingEnabled) {
+		leftGeoFence(area);
 	}
 	
 	if (!timeTrackingEnabled) {
+		var reverseGeocodingParameters = {
+				prox: position.coords.latitude + ',' + position.coords.longitude + ',150',
+			    mode: 'retrieveAddresses',
+			    maxresults: 1
+		};
 		
+		// Call the geocode method with the geocoding parameters,
+		// the callback and an error callback function (called if a
+		// communication error occurs):
+		geocoder.reverseGeocode(
+				reverseGeocodingParameters,
+			    onSuccess,
+			    function(e) { document.getElementById('nevigation_Destination_Name').innerHTML = "Unavailable" });
 	}
 	
 }
 
 function errorCallback(error) {
-    var errorInfo = document.getElementById('nevigation_Map');
+    var errorInfo = document.getElementById('nevigation_Destination_Head');
 
     switch (error.code) {
         case error.PERMISSION_DENIED:
@@ -120,6 +134,6 @@ function stopWatchFunc() {
 // Define a callback function to process the response:
 function onSuccess(result) {
 	var location = result.Response.View[0].Result[0];
-	document.getElementById('nevigation_Destination_Head').innerHTML = "Location";
-	document.getElementById('nevigation_Destination_Name').innerHTML = "Personally Identifiable Information was removed";
+	window.alert(JSON.stringify(location.Relevance));
+	document.getElementById('nevigation_Destination_Name').innerHTML = location.Address.Label;
 };

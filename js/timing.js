@@ -132,7 +132,7 @@ function leftGeoFence(areaThatWasLeft_ID) {
 function enteredGeoFence(areaThatWasEntered) {
 	//Display current location on main screen
 	$("#TimeTrack_Position")[0].style.visibility = "visible";
-	timeTrackingEnabled = true;
+//	timeTrackingEnabled = true;
 	document.getElementById('TimeTrack_Position_Text').innerHTML = areaThatWasEntered;
 	document.getElementById('nevigation_Destination_Name').innerHTML = areaThatWasEntered;
 }
