@@ -8,7 +8,12 @@ var geoJSONFeature = {
 		{ "type": "Feature", "name": "Dining room", "properties": { "id": 12 }, "geometry": { "type": "MultiPolygon", "coordinates": [ [ [ [ -0.129307840125146, 51.576980397436941 ], [ -0.129191385368048, 51.576829838072406 ], [ -0.129443426735195, 51.576746656103047 ], [ -0.129539917819647, 51.576910524582672 ], [ -0.129307840125146, 51.576980397436941 ] ] ] ] } },
 		{ "type": "Feature", "name": "Gym", "properties": { "id": 13 }, "geometry": { "type": "MultiPolygon", "coordinates": [ [ [ [ -0.129442594915501, 51.576747487922738 ], [ -0.12953825418026, 51.576909692762982 ], [ -0.129612286132986, 51.576893056369109 ], [ -0.129502485933437, 51.576733346987943 ], [ -0.129401003930824, 51.57668260598664 ], [ -0.129160608039387, 51.576786583448332 ], [ -0.129188058089274, 51.576828174433011 ], [ -0.129442594915501, 51.576747487922738 ] ] ] ] } }
 		]
-		}
+	}
+
+
+//URL of Rest API
+//const url = 'http://localhost:7071/api/TimeTrackingAPI'; 
+const url = 'https://workspaceguruapi.azurewebsites.net/api/TimeTrackingAPI'; 
 	
 var platform = new H.service.Platform({'apikey': '5cA7YxjJSM3kLtn4MlXrNbIkcRiV5LzJ0J1XWHBMyr0'});
 
@@ -42,7 +47,40 @@ mymap.boxZoom.disable();
 mymap.doubleClickZoom.disable();
 mymap.keyboard.disable();
 mymap.scrollWheelZoom.disable();
-mymap.tap.disable();
+//mymap.tap.disable();
+
+let myJson;
+
+function fetchGeoData() {
+	 const userAction = async () => {
+	
+		 	// The parameters we are gonna pass to the fetch function
+		 	let fetchData = { 
+	            method: 'POST', 
+	            body: "f"	//Means fetch data
+	        };
+		 	
+	 		const response = await fetch(url,fetchData);
+	 
+	        switch(response.status) {
+	            //200 means the REST API successfully carried out whatever action the client requested
+	            case 200:
+	                const myJson = await response.json(); //extract JSON from the http response
+	                return myJson;
+	            default:
+	                return "Failed to update";
+	          }
+	   
+	    };
+	    userAction().then(updatedGeoJSONFeature => {
+	    	geoJSONFeature = updatedGeoJSONFeature;
+	    }).catch(e => {
+	        //If fetch timeout, release the lock
+	        console.log("Fail to update geoJSONFeature");
+	        setTimeout(fetchGeoData, 100000);
+	    });
+}
+fetchGeoData();
 
 function centerLeafletMapOnMarker(map, marker) {
 	  var latLngs = [marker.getLatLng()];
@@ -91,7 +129,6 @@ function successCallback(position) {
 			    onSuccess,
 			    function(e) { document.getElementById('nevigation_Destination_Name').innerHTML = "Unavailable" });
 	}
-	
 }
 
 function errorCallback(error) {

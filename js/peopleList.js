@@ -60,9 +60,6 @@ function updatePeopleList(startLetter){
 		var person = document.createElement("img");
 		var personName = document.createElement("p");
 		person.src = peopleList_Photos[i];
-		person.addEventListener("load", function(){
-			loaded_PeopleList(peopleList_Length);
-		});
 		person.classList.add("peopleList_Person");
 		person.style.top = top;
 		person.style.left = left;
