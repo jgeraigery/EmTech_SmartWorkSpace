@@ -1,3 +1,28 @@
+<!-- 
+A template containing multiple page containers is included in this application's index.html file.
+
+The Tizen Advanced UI Framework components allow you to create and manage various kinds of UI components.
+ The components represent a visual UI element, such as a button or slider, which gives you interaction and manipulation features.
+ 
+ The basic building block of an application UI in the TAU library is the Page element, identified by the attribute class="ui-page", which includes all other elements. 
+ The element is optional and extendable, so you can have any element for grouping controls you want.
+ 
+ A page consists of:
+
+    Header area
+
+    Shows the user which page is currently open. The header can contain buttons, menus, and toolbars. The header is optional.
+    Content area
+
+    Contains the main application content. The content area has an optional scroll bar.
+    Footer area
+
+    Contains a status line or buttons. The footer is optional.
+ 
+ See the following page for more details: https://developer.tizen.org/development/guides/web-application/user-interface/tizen-advanced-ui/managing-pages
+ 
+ -->
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,6 +51,8 @@
     <script src="js/geojson-utils.js"></script>
     <script src="js/pip.js"></script>
 </head>
+
+<!-- In a multi-page layout, the main page is defined with the ui-page-active class.  -->
 
 <body>
 	<div class="ui-page ui-page-active" id="main">

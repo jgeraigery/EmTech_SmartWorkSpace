@@ -127,6 +127,8 @@ function successCallback(position) {
 	}
 }
 
+//the error event handler is invoked when the location request attempt fails
+
 function errorCallback(error) {
     var errorInfo = document.getElementById('nevigation_Destination_Name');
 
@@ -146,6 +148,8 @@ function errorCallback(error) {
     }
 }
 
+//Creates a repeated position update request with the watchPosition() method:
+
 (function watchFunc() {
     if (navigator.geolocation) {
     	watchId = navigator.geolocation.watchPosition(successCallback, errorCallback, {enableHighAccuracy: true});
@@ -153,6 +157,8 @@ function errorCallback(error) {
         document.getElementById('nevigation_Map').innerHTML = 'Geolocation is not supported.';
     }
 }());
+
+//The repeated position update request continues until the clearWatch() method is called with the corresponding identifier:
 
 function stopWatchFunc() {
     if (navigator.geolocation) {

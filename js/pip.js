@@ -1,3 +1,7 @@
+/* adapted from https://github.com/mapbox/leaflet-pip
+ * A Leaflet-friendly API for point in polygon operations
+ */
+	
 function isPoly(l) {
     return l.feature &&
         l.feature.geometry &&

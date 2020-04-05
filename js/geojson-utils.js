@@ -1,3 +1,7 @@
+/* A set of utilities for converting between standard geojson and other json formats accessible at https://github.com/Esri/geojson-utils
+ * Here you will find some functions to help you manipulate and work with GeoJSON objects.
+ */
+
 var gju = {};
 
   // adapted from http://www.kevlindev.com/gui/math/intersection/Intersection.js
