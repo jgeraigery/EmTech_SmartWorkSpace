@@ -22,10 +22,9 @@ let timeSpentInfo_Default = {
     }
 };
 
-//The locationID set corresponds to the locationIndicator， must be synchronized with in API
-const locationIDSet = [ "Meeting room",
-                        "Lab",
-                        "Dinning room" ];
+//The locationID set corresponds to the locationIndicator，synchronized with cloud
+var locationIDSet = [];
+geoJSONFeature.features.forEach(a => locationIDSet.push(a.name));
 
 let timeSpentTimer = 0;   //Time spent in seconds, will be reset when change position
 
@@ -117,6 +116,8 @@ function leftGeoFence(areaThatWasLeft_ID) {
 
     let locationIndicator = mapLocationID(areaThatWasLeft_ID);      //Convert ID to indicator
 
+    if(locationIndicator === -1) return;
+    
     timeSpentInfo.timeSpentInfo.indicator.push(locationIndicator);
     timeSpentInfo.timeSpentInfo.time.push(timeSpentTimer);
 
@@ -144,7 +145,7 @@ function enteredGeoFence(areaThatWasEntered) {
 //Simulation of position change, should be replaced in the future
  function positionChangeSimulation() {
 	 if(locationID != null)	leftGeoFence(locationID);
-     locationID = Object.values(locationIDSet)[Math.floor((Math.random()*2))];
+     locationID = Object.values(locationIDSet)[Math.floor((Math.random()*4))];
      enteredGeoFence(locationID);
      setTimeout(positionChangeSimulation, Math.floor((Math.random()*50000 + 5000)));
  }
