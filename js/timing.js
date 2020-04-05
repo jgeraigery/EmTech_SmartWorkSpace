@@ -12,7 +12,7 @@ var locationID = null;
 let timeSpentInfo;
 
 //User Time spent info which will be store in the cosmos database via azure function
-let timeSpentInfo_Default = {
+const timeSpentInfo_Default = {
     "userID" : "",     //Using device's MAC address as ID
     "date" : "",       //The date when the time tracking info was recorded
     "userName" : "Richard",                 //Name of user
