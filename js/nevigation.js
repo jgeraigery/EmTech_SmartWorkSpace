@@ -97,7 +97,7 @@ function successCallback(position) {
 }
 
 function errorCallback(error) {
-    var errorInfo = document.getElementById('nevigation_Destination_Head');
+    var errorInfo = document.getElementById('nevigation_Destination_Name');
 
     switch (error.code) {
         case error.PERMISSION_DENIED:
@@ -134,6 +134,5 @@ function stopWatchFunc() {
 // Define a callback function to process the response:
 function onSuccess(result) {
 	var location = result.Response.View[0].Result[0];
-	window.alert(JSON.stringify(location.Relevance));
-	document.getElementById('nevigation_Destination_Name').innerHTML = location.Address.Label;
+	document.getElementById('nevigation_Destination_Name').innerHTML = location.Location.Address.Label;
 };
