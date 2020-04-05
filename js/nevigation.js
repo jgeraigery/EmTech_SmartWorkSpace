@@ -1,11 +1,12 @@
 var geoJSONFeature = {
 		"type": "FeatureCollection",
-		"name": "Foobar",
+		"name": "Office",
 		"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 		"features": [
-		{ "type": "Feature", "properties": { "id": 2 }, "geometry": { "type": "MultiPolygon", "coordinates": [ [ [ [ -0.129413133413953, 51.576761774433884 ], [ -0.129261974965062, 51.576809999247338 ], [ -0.12932965180411, 51.576889428351848 ], [ -0.129405838904355, 51.576861060814522 ], [ -0.129526198312721, 51.576898749114115 ], [ -0.129413133413953, 51.576761774433884 ] ] ] ] } },
-		{ "type": "Feature", "properties": { "id": 5 }, "geometry": { "type": "MultiPolygon", "coordinates": [ [ [ [ -0.129405433653822, 51.576861466065054 ], [ -0.129328841303043, 51.576888617850791 ], [ -0.12937625561543, 51.576947784428633 ], [ -0.129445958707144, 51.576925090398774 ], [ -0.129405433653822, 51.576861466065054 ] ] ] ] } },
-		{ "type": "Feature", "properties": { "id": 7 }, "geometry": { "type": "MultiPolygon", "coordinates": [ [ [ [ -0.129405838904355, 51.576861060814522 ], [ -0.12944555345661, 51.576924685148235 ], [ -0.129525793062188, 51.576898749114115 ], [ -0.129405838904355, 51.576861060814522 ] ] ] ] } }
+		{ "type": "Feature", "name": "Lab", "properties": { "id": 10 }, "geometry": { "type": "MultiPolygon", "coordinates": [ [ [ [ -0.129841826966892, 51.577008597994656 ], [ -0.129578233575669, 51.577090793783306 ], [ -0.129469583969967, 51.576930181322709 ], [ -0.129611300846969, 51.576892390155507 ], [ -0.129503596020448, 51.576733667253265 ], [ -0.129614135184509, 51.576701544761143 ], [ -0.129841826966892, 51.577008597994656 ] ] ] ] } },
+		{ "type": "Feature", "name": "Meeting room", "properties": { "id": 11 }, "geometry": { "type": "MultiPolygon", "coordinates": [ [ [ [ -0.129413841998346, 51.577138977521486 ], [ -0.129578233575669, 51.577088904224944 ], [ -0.129469583969967, 51.576930181322709 ], [ -0.129307081951005, 51.576981199398425 ], [ -0.129413841998346, 51.577138977521486 ] ] ] ] } },
+		{ "type": "Feature", "name": "Dining room", "properties": { "id": 12 }, "geometry": { "type": "MultiPolygon", "coordinates": [ [ [ [ -0.129307840125146, 51.576980397436941 ], [ -0.129191385368048, 51.576829838072406 ], [ -0.129443426735195, 51.576746656103047 ], [ -0.129539917819647, 51.576910524582672 ], [ -0.129307840125146, 51.576980397436941 ] ] ] ] } },
+		{ "type": "Feature", "name": "Gym", "properties": { "id": 13 }, "geometry": { "type": "MultiPolygon", "coordinates": [ [ [ [ -0.129442594915501, 51.576747487922738 ], [ -0.12953825418026, 51.576909692762982 ], [ -0.129612286132986, 51.576893056369109 ], [ -0.129502485933437, 51.576733346987943 ], [ -0.129401003930824, 51.57668260598664 ], [ -0.129160608039387, 51.576786583448332 ], [ -0.129188058089274, 51.576828174433011 ], [ -0.129442594915501, 51.576747487922738 ] ] ] ] } }
 		]
 		}
 
@@ -28,8 +29,8 @@ leafletPip.bassackwards = true;
 
 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
 //	attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-	maxZoom: 18,
-	minZoom: 18,
+	maxZoom: 19,
+	minZoom: 19,
 	id: 'mapbox/streets-v11',
 	tileSize: 512,
 	zoomOffset: -1,
@@ -70,9 +71,13 @@ function successCallback(position) {
 	var results = leafletPip.pointInLayer(coords, myLayer, true);
 	
 	if (results.length > 0) {
-		enteredGeoFence(geoJSONFeature.name);
+		enteredGeoFence(results[0].toGeoJSON().name);
 	} else {
-		leftGeoFence(geoJSONFeature.name)
+		leftGeoFence(results[0].toGeoJSON().name)
+	}
+	
+	if (!timeTrackingEnabled) {
+		
 	}
 	
 }
