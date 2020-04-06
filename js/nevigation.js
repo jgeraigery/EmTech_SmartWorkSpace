@@ -57,7 +57,7 @@ var watchId;
 var marker = null;
 var mymap = L.map('nevigation_Map', {zoomControl: false, attributionControl: false});
 var myLayer = L.geoJSON(geoJSONFeature).addTo(mymap);
-var area;
+var area = null;
 
 leafletPip.bassackwards = true;
 
@@ -104,10 +104,19 @@ function successCallback(position) {
 	var results = leafletPip.pointInLayer(coords, myLayer, true);
 	
 	if (results.length > 0) {
-		area = results[0].toGeoJSON().name
-		enteredGeoFence(area);
-	} else if (timeTrackingEnabled) {
-		leftGeoFence(area);
+		if (area === null) {
+			enteredGeoFence(results[0].toGeoJSON().name);
+			area = results[0].toGeoJSON().name;
+		} else if (area === results[0].toGeoJSON().name) {
+			
+		} else {
+			leftGeoFence(area);
+			enteredGeoFence(results[0].toGeoJSON().name);
+		}
+	} else {
+		if (area != null) {
+			leftGeoFence(area);
+		}
 	}
 	
 	if (!timeTrackingEnabled) {

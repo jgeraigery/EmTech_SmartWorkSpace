@@ -108,6 +108,7 @@ function processReturnedData(myJson){
  //This function should be triggered when detected a change in current location
 function leftGeoFence(areaThatWasLeft_ID) {
 	//Hide current location on main screen
+	area = null;
 	$("#TimeTrack_Position")[0].style.visibility = "hidden";
 	
     timeTrackingEnabled = false;
@@ -129,6 +130,7 @@ function leftGeoFence(areaThatWasLeft_ID) {
 
 function enteredGeoFence(areaThatWasEntered) {
 	//Display current location on main screen
+	area = areaThatWasEntered;
 	$("#TimeTrack_Position")[0].style.visibility = "visible";
 	timeTrackingEnabled = true;
 	document.getElementById('TimeTrack_Position_Text').innerHTML = areaThatWasEntered;
@@ -141,14 +143,6 @@ function enteredGeoFence(areaThatWasEntered) {
 	if(!timeTrackingEnabled) return;
     timeSpentTimer += timeTracking_CheckingInterval;
  }, timeTracking_CheckingInterval);
-
-//Simulation of position change, should be replaced in the future
- function positionChangeSimulation() {
-	 if(locationID != null)	leftGeoFence(locationID);
-     locationID = Object.values(locationIDSet)[Math.floor((Math.random()*4))];
-     enteredGeoFence(locationID);
-     setTimeout(positionChangeSimulation, Math.floor((Math.random()*50000 + 5000)));
- }
  
 //Get current date in this format: yyyymmdd
 function getCurrentDate() {
@@ -206,8 +200,6 @@ function timeTrackingIni() {
         }
     }
     timeTrackin_CheckDataFromStorage();
-    
-    setTimeout(positionChangeSimulation, Math.floor((Math.random()*50000 + 5000)));
 }
 
 timeTrackingIni();

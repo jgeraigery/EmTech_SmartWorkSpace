@@ -5,7 +5,7 @@ let notification = 0;
 let timeSpentTimer_Old = 0;
 
 //Time for an pop up window to pop up in ms 
-let timeSpentNotification_NotifyTime = 3600000; //One hour
+let timeSpentNotification_NotifyTime = 10000; //10 seconds
 
 var timeSpentPopUpElement = document.getElementById("timeSpentPopUp");
 	timeSpentPopUp = tau.widget.Popup(timeSpentPopUp);
@@ -31,6 +31,6 @@ function checkStayTime() {
 //function to send a notification to users
 function sendNotification(){
 	timeSpentPopUp.close();
-	$("#timeSpentPopUp_Contents")[0].innerHTML = "You have Spent " + Math.floor(timeSpentTimer/1000/60) + " minutes in place"
+	$("#timeSpentPopUp_Contents")[0].innerHTML = "You have Spent " + Math.floor(timeSpentTimer/1000) + " seconds in place"
 	timeSpentPopUp.open();
 }
