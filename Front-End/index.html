@@ -1,0 +1,301 @@
+<!-- 
+A template containing multiple page containers is included in this application's index.html file.
+
+The Tizen Advanced UI Framework components allow you to create and manage various kinds of UI components.
+ The components represent a visual UI element, such as a button or slider, which gives you interaction and manipulation features.
+ 
+ The basic building block of an application UI in the TAU library is the Page element, identified by the attribute class="ui-page", which includes all other elements. 
+ The element is optional and extendable, so you can have any element for grouping controls you want.
+ 
+ A page consists of:
+
+    Header area
+
+    Shows the user which page is currently open. The header can contain buttons, menus, and toolbars. The header is optional.
+    Content area
+
+    Contains the main application content. The content area has an optional scroll bar.
+    Footer area
+
+    Contains a status line or buttons. The footer is optional.
+ 
+ See the following page for more details: https://developer.tizen.org/development/guides/web-application/user-interface/tizen-advanced-ui/managing-pages
+ 
+ -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+	<meta name="description" content="App"/>
+    <title>Home</title>
+  	
+  	<link rel="stylesheet" href="css/tau.css"/>	
+  	<link rel="stylesheet" type="text/css" href="css/watch.css" />	
+  	<link rel="stylesheet" type="text/css" href="css/homePage.css" />
+    <link rel="stylesheet" type="text/css" href="css/nevigation.css" />
+    <link rel="stylesheet" type="text/css" href="css/peopleList.css" />
+    <link rel="stylesheet" type="text/css" href="css/personalDetails.css" />
+    <link rel="stylesheet" type="text/css" href="css/workSpace.css" />
+    <link rel="stylesheet" type="text/css" href="css/workSpaceList.css" />
+    <link rel="stylesheet" type="text/css" href="css/ReportQRCode.css" />
+    <link rel="stylesheet" type="text/css" href="css/workSpaceList.css" /> 
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
+    
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-core.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-service.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
+    <script src="https://cdn.rawgit.com/hayeswise/Leaflet.PointInPolygon/v1.0.0/wise-leaflet-pip.js"></script>
+    <script src="js/AnimatedMarker.js"></script>
+    <script src="js/geojson-utils.js"></script>
+    <script src="js/pip.js"></script>
+</head>
+
+<!-- In a multi-page layout, the main page is defined with the ui-page-active class.  -->
+
+<body>
+	<div class="ui-page ui-page-active" id="main">
+	   <div class="ui-content">
+	      <div class="container">
+	        <div class="background" id="mainPageBackground">
+	            <div class="components-main">
+	                <div id="hand-main-hour"></div>
+	                <div id="hand-main-minute"></div>
+	                <div id="hand-main-second"></div>
+	                <div id="TimeTrack-TimeLeft">
+	                <p id="TimeTrack_Head"></p>
+	                <a class="linkWithoutStyle" href="#nevigationPage">
+	                	<p id="TimeTrack_TimeLeft_Text">00:00:00</p>
+	                </a>
+	                </div>
+	                <div id="TimeTrack_Position">
+	                	<div id="TimeTrack_Position_Indicator"></div>
+	                	<p id="TimeTrack_Position_Text"></p>
+	                </div>
+	                <div id="TimeTrack_Position_toolBar">
+	                	<a class="linkWithoutStyle" href="#peopleListPage">
+	                		<img class="toolBar_Left" src="image/ToolBar1.png"></img>
+	                	</a>
+	                	<a class="linkWithoutStyle" href="#workplaceType">
+	                		<img class="toolBar_Right" src="image/ToolBar2.png"></img>
+	                	</a>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	   </div>
+	</div>
+	
+	<div class="ui-page" id="nevigationPage">
+	    <div class="ui-content">
+	        <div class="container">
+	         <div class="background">
+	             <div class="components-main">
+	               <p class="page_Title" id="nevigation_Title">Map</p>
+	               <p class="page_CurrentTime">00:00</p>
+	               <div id="toolBar">
+	               <a class="linkWithoutStyle" href="#peopleListPage">
+	                   <img class="toolBar_Left" src="image/ToolBar1.png"></img>
+	                 </a>
+	                  <a class="linkWithoutStyle" href="#workplaceType">
+	                   <img class="toolBar_Right" src="image/ToolBar2.png"></img>
+	                 </a>
+	                 </div>
+	                 <a class="linkWithoutStyle" href="#main">
+	                   <div id="nevigation_Map"></div>
+	                 </a>
+	                 <div id="nevigation_Destination">
+	                   <p id="nevigation_Destination_Head">Location:</p>
+	                   <p id="nevigation_Destination_Name">N/A</p>
+	                 </div>
+	             </div>
+	         </div>
+	     </div>
+	   </div>
+ 	</div>
+	
+	<div class="ui-page" id="peopleListPage">
+	   <div class="ui-content">
+	       <div class="container">
+	        <div class="background">
+	            <div class="components-main">
+	            	<p class="page_Title" id="PeopleList_Page_Title">People</p>
+	            	<p class="page_CurrentTime" id="PeopleList_Page_CurrentTime">00:00</p>
+	            	<div id="toolBar">
+		            	<a class="linkWithoutStyle" href="#main">
+		                	<img class="toolBar_Left" src="image/ToolBar1.png"></img>
+		                </a>
+		                <a class="linkWithoutStyle" href="#workplaceType">
+		                	<img class="toolBar_Right" src="image/ToolBar2.png"></img>
+		                </a>
+	                </div>
+	                <div id="peopleList">
+	                	<!-- List of people -->
+	                </div>
+	               	<div id="FirstLetterNameSelector">
+	               		<p id="PreviousLetter"><!--Letter--></p>
+	               		<p id="CurrentLetter"><!--Letter--></p>
+	               		<p id="NextLetter"><!--Letter--></p>
+	               	</div>
+	            </div>
+	        </div>
+	   	</div>
+	   </div>
+	</div>
+	
+	<div class="ui-page" id="personalDetails">
+	   <div class="ui-content">
+	       <div class="container">
+	        <div class="background">
+	            <div class="components-main">
+	            	<img class="Details_Page_BG" src="image/personalDetails_bg.png"></img>
+	            	<img id="PersonalDetails_Page_PersonalPhoto"></img>
+	            	<img class="Details_Page_NevigationIcon" src="image/personalDetails_NevigationIcon.png"></img>
+	            	<p class="Details_Page_Position">Position</p>
+	            	<p class="page_CurrentTime Details_Page_CurrentTime">00:00</p>
+	            	<div id="toolBar">
+		            	<a class="linkWithoutStyle" href="#peopleListPage">
+		                	<img class="toolBar_Left" src="image/ToolBar1.png"></img>
+		                </a>
+		                <a class="linkWithoutStyle" href="#workplaceType">
+		                	<img class="toolBar_Right" src="image/ToolBar2.png"></img>
+		                </a>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	   </div>
+	</div>
+	
+	<div class="ui-page" id="workplaceType">
+	   <div class="ui-content">
+	       <div class="container">
+	        <div class="background">
+	            <div class="components-main">
+	            	<p class="page_Title" id="PeopleList_Page_Title">Menu</p>
+	            	<p class="page_CurrentTime" id="PeopleList_Page_CurrentTime">00:00</p>
+	            	<div id="toolBar">
+		            	<a class="linkWithoutStyle" href="#peopleListPage">
+		                	<img class="toolBar_Left" src="image/ToolBar1.png"></img>
+		                </a>
+		                <a class="linkWithoutStyle" href="#main">
+		                	<img class="toolBar_Right" src="image/ToolBar2.png"></img>
+		                </a>
+	                </div>
+	                <div>	<!-- WorkSpace Type Icons -->
+	                	<img class="workSpaceIcon" id="workSpace_Leisure" src="image/workPlaceIcons/Leisure.png" onclick="selectWorkSpaceType('Rest')"></img>
+	                	<img class="workSpaceIcon" id="workSpace_Bussiness" src="image/workPlaceIcons/Bussiness.png" onclick="selectWorkSpaceType('Work')"></img>
+	                	<img class="workSpaceIcon" id="workSpace_Favourite" src="image/workPlaceIcons/Favourite.png"  onclick="selectWorkSpaceType('Fav')"></img>
+	                	<img class="workSpaceIcon" id="workSpace_Report" src="image/workPlaceIcons/Report.png"  onclick="showReportQRCode()"></img>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	   </div>
+	</div>
+	
+	<div class="ui-page" id="workplaceListPage">
+	   <div class="ui-content">
+	       <div class="container">
+	        <div class="background">
+	            <div class="components-main">
+	            	<p class="page_Title" id="WorkSpaceList_Page_Title">Type</p>
+	            	<p class="page_CurrentTime" id="WorkSpaceList_Page_CurrentTime">00:00</p>
+	            	<div id="toolBar">
+		            	<a class="linkWithoutStyle" href="#peopleListPage">
+		                	<img class="toolBar_Left" src="image/ToolBar1.png"></img>
+		                </a>
+		                <a class="linkWithoutStyle" href="#workplaceType">
+		                	<img class="toolBar_Right" src="image/ToolBar2.png"></img>
+		                </a>
+	                </div>
+	                <div id="WorkSpaceList">	
+	                	<!-- WorkSpace List-->
+	                </div>
+	               	<div id="FirstLetterNameSelector">
+	               		<p id="PreviousLetter"><!--Letter--></p>
+	               		<p id="CurrentLetter"><!--Letter--></p>
+	               		<p id="NextLetter"><!--Letter--></p>
+	               	</div>
+	            </div>
+	        </div>
+	    </div>
+	   </div>
+	</div>
+	
+	<div class="ui-page" id="timeSpentReportQRCode">
+	   <div class="ui-content">
+	       <div class="container">
+	        <div class="background">
+	            <div class="components-main">
+	            	<p class="page_Title">Report</p>
+	            	<p class="page_CurrentTime" id="WorkSpaceList_Page_CurrentTime">00:00</p>
+	            	<div id="toolBar">
+		            	<a class="linkWithoutStyle" href="#peopleListPage">
+		                	<img class="toolBar_Left" src="image/ToolBar1.png"></img>
+		                </a>
+		                <a class="linkWithoutStyle" href="#workplaceType">
+		                	<img class="toolBar_Right" src="image/ToolBar2.png"></img>
+		                </a>
+	            	</div>
+	            	<div id="QRCode">
+	                	<!-- QRCODE -->
+	                </div>
+	        	</div>
+	    	</div>
+	   	</div>
+	</div>
+	</div>
+	
+	<div class="ui-page" id="workSpaceDetails">
+	   <div class="ui-content">
+	       <div class="container">
+	        <div class="background">
+	            <div class="components-main">
+	            	<img class="Details_Page_BG" src="image/personalDetails_bg.png"></img>
+	            	<img class="Details_Page_NevigationIcon" src="image/personalDetails_NevigationIcon.png"></img>
+	            	<p class="Details_Page_Position">Position</p>
+	            	<p class="page_CurrentTime Details_Page_CurrentTime">00:00</p>
+	            	<div id="toolBar">
+	            	<a class="linkWithoutStyle" href="#peopleListPage">
+	                	<img class="toolBar_Left" src="image/ToolBar1.png"></img>
+	                </a>
+	                <a class="linkWithoutStyle" href="#workplaceType">
+	                	<img class="toolBar_Right" src="image/ToolBar2.png"></img>
+	                </a>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	   </div>
+	</div>
+	
+	<!-- Pop Up window -->
+	<div id="timeSpentPopUp" class="ui-popup">
+	   	<div id = "timeSpentPopUp_Contents" class="ui-popup-content">
+	      You have Spent -- minutes 
+	      in current places
+	   	</div>
+	   	<div class="ui-popup-footer ui-bottom-button">
+	      <button class="ui-btn" id="timeSpentPopUp_Close" data-rel="back" data-inline="true" class="ui-btn">Close</button>
+	   	</div>
+	</div>
+	
+ 	<script type="text/javascript" src="js/tau.js"></script>
+ 	
+ 	<script src="js/headBar_Clock.js"></script>
+    <script src="js/mainPage_Clock.js"></script>
+    <script src="js/mainPage_TimeTrack.js"></script>
+    <script src="js/nevigation.js"></script>
+    <script src="js/peopleList.js"></script>
+    <script src="js/rotaryEvent.js"></script>
+    <script src="js/workSpaceList.js"></script>
+    <script src="js/backButtonEvents.js"></script>
+    <script src="js/timing.js"></script>
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <script src="js/jquery-qrcode.min.js"></script>
+    <script src="js/ReportQRCode.js"></script>
+    <script src="js/timeSpentNotification.js"></script>
+</body>
+</html>
