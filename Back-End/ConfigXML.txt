@@ -1,2 +1,0 @@
-<tizen:privilege name="http://tizen.org/privilege/system"/>
-<tizen:privilege name="http://tizen.org/privilege/telephony"/>
