@@ -1,0 +1,11 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "FUNCTIONS_WORKER_RUNTIME": "python",
+    "AzureWebJobsStorage": "<Storage Connection String>",
+    "MyCosmosDBConnectionString": "AccountEndpoint=https://group16.documents.azure.com:443/;AccountKey=8bBzMrmOPLBPHLnXCETG41MsgCR1dT2SuXsHe0uZ23Qi2F3vqDPhADrxsLs17IT7RtRumaGCZPmPm9Ijr74z9g==;",
+    "ComputerVisionSubscription": "<Azure Computer Vision API SubscriptionKey>",
+    "ComputerVisionApiEndpoint": "<Azure Computer Vision API Endpoint",
+    "MyStorageConnectionString": "<Storage Connection String>"
+  }
+}

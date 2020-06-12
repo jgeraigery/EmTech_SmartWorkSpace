@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <title></title>
+        <meta name="description" content="">
+        <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+        <link rel="stylesheet" href="css/chart.css">
+
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <div style="display: flex">
+            <div id="chart-container">
+
+            </div>
+            <div id="chart-container_OverAll">
+                
+            </div>
+        </div>
+        <script src="js/chart.js/dist/Chart.js"></script>
+        <script src="js/TimeTrackingReport_Initialization.js"></script>
+        <style>
+            body {
+                background-color: black;
+            }
+            #chart-container_OverAll {
+                position: relative; 
+                flex:1;
+                display: flex; 
+                flex-direction: column;
+                justify-content: space-around;
+            }
+            #chart-container {
+                display: none;
+                position: relative; 
+                flex:2;
+            }
+            @media  screen and (max-width: 500px) {
+                #chart-container_OverAll * {
+                    height: 31vh !important;
+                    max-width: 95vw !important;
+                }
+                #chart-container *{
+                     display: none !important;
+                }
+            }
+            @media  screen and (min-width: 500px) {
+                #chart-container {
+                    height: 25vh;
+                    width: 50vw;
+                    display: flex;
+                    flex-direction: column;
+                    flex-grow: 1;
+                }
+            }
+        </style>
+    </body>
+</html>
