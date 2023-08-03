@@ -43,7 +43,7 @@ Smart Workspace is available under the [MIT Licence](./LICENCE).
 - [UCL IXN Proejct](https://github.com/Shadowhusky/SmartWorkSpace)
 
 ## Contact
-Feel free to [raise an issue on GitHub](https://github.com/Avanade/SmartWorkSpace/issues), or see our [security disclosure](./SECURITY.md) policy.
+Feel free to [raise an issue on GitHub](https://github.com/Avanade/SmartWorkspace/issues), or see our [security disclosure](./SECURITY.md) policy.
 
 ## Contributing
 Contributions are welcome. See information on [contributing](./CONTRIBUTING.md), as well as our [code of conduct](https://avanade.github.io/code-of-conduct/).
