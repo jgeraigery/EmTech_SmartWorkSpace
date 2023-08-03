@@ -42,16 +42,13 @@ Smart Workspace is available under the [MIT Licence](./LICENCE).
 ## Solutions Referenced
 - [UCL IXN Proejct](https://github.com/Shadowhusky/SmartWorkSpace)
 
-## Documentation
-The `docs` folder contains [more detailed documentation](./docs/start-here.md), along with setup instructions.
-
 ## Contact
-Feel free to [raise an issue on GitHub](https://github.com/Avanade/gh-management/issues), or see our [security disclosure](./SECURITY.md) policy.
+Feel free to [raise an issue on GitHub](https://github.com/Avanade/SmartWorkSpace/issues), or see our [security disclosure](./SECURITY.md) policy.
 
 ## Contributing
 Contributions are welcome. See information on [contributing](./CONTRIBUTING.md), as well as our [code of conduct](https://avanade.github.io/code-of-conduct/).
 
-If you're happy to follow these guidelines, then check out the [getting started](./docs/start-here.md) guide.
+If you're happy to follow these guidelines, then please get involved.
 
 ## Who is Avanade?
 
