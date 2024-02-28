@@ -34,7 +34,7 @@
   "deprecated": false,
   "description": "Simple HTML5 charts using the canvas element.",
   "devDependencies": {
-    "clean-css": "^4.2.1",
+    "clean-css": "^5.0.0",
     "coveralls": "^3.0.0",
     "eslint": "^5.9.0",
     "eslint-config-chartjs": "^0.1.0",
